@@ -5,12 +5,12 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 
-namespace InlineTextLinkControlExample
+namespace InlineTextLinkControlExampleFramework
 {
     [TemplatePart(Name = "PART_TextBlock", Type = typeof(TextBlock))]
     public class TextNumberLinkControl : Control
     {
-        private static readonly Regex _regex = new(@"[0-9]{6}", RegexOptions.Compiled);
+        private static readonly Regex _regex = new Regex(@"[0-9]{6}", RegexOptions.Compiled);
 
         public static readonly DependencyProperty LinkCommandProperty =
             DependencyProperty.Register("LinkCommand", typeof(ICommand), typeof(TextNumberLinkControl),
@@ -42,7 +42,7 @@ namespace InlineTextLinkControlExample
 
         private static void OnTextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var lControl = d as TextNumberLinkControl; 
+            var lControl = d as TextNumberLinkControl;
             if (!(d is TextNumberLinkControl) || lControl._textBlock == null) return;
             lControl.ResetText();
 
